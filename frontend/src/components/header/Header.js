@@ -4,6 +4,7 @@ import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import * as React from "react";
+import {NavLink} from "react-router-dom";
 
 export default () => {
   return (
@@ -21,18 +22,18 @@ export default () => {
           <Link
             variant="button"
             color="text.primary"
-            href="#"
+            to="/products/create"
             sx={{ my: 1, mx: 1.5 }}
-          >
-            Features
+            component={NavLink}>
+            Create new product
           </Link>
           <Link
             variant="button"
             color="text.primary"
-            href="#"
+            to="/users/registration"
             sx={{ my: 1, mx: 1.5 }}
-          >
-            Enterprise
+            component={NavLink}>
+            Create new user
           </Link>
           <Link
             variant="button"
