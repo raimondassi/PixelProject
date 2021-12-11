@@ -14,7 +14,5 @@ public class PixelProjectApplication {
         ProductService productService = new ProductService();
 //        productService.generatePicture();
         // productService.generateProduct();
-
     }
-
 }
