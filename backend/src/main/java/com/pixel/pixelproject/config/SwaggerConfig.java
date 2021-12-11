@@ -1,4 +1,4 @@
-package lt.codeacademy.api.canfig;
+package com.pixel.pixelproject.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
