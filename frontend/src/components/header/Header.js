@@ -38,10 +38,10 @@ export default () => {
           <Link
             variant="button"
             color="text.primary"
-            href="#"
+            to="/products/generate_picture"
             sx={{ my: 1, mx: 1.5 }}
-          >
-            Support
+            component={NavLink}>
+            Create picture
           </Link>
         </nav>
         <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
