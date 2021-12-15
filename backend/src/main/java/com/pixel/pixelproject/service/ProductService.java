@@ -2,6 +2,8 @@ package com.pixel.pixelproject.service;
 
 import com.pixel.pixelproject.Entity.Pixel;
 import com.pixel.pixelproject.Entity.Product;
+import com.pixel.pixelproject.exception.ProductNotFoundException;
+import com.pixel.pixelproject.repository.ProductRepository;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.process.ImageProcessor;
@@ -13,12 +15,18 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import static com.pixel.pixelproject.service.Properties.imageHeight;
 import static com.pixel.pixelproject.service.Properties.imageWidth;
 
 @Service
 public class ProductService {
+    ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public void generatePicture() throws IOException {
         int width = 640, height = 320;
@@ -100,6 +108,34 @@ public class ProductService {
         }
 
     }
+
+    public void createProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    public List<Product> getProducts() {
+        return productRepository.findAll();
+    }
+
+    public Product getProduct(UUID id) {
+        return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+    }
+
+    public void updateProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    public void deleteProduct(UUID id) {
+        productRepository.deleteById(id);
+    }
+
+    public List<Product> findProducts(String query) {
+        query = "%" + query + "%";
+        return productRepository.findProductByNameLike(query);
+
+    }
+
+
 }
 
 

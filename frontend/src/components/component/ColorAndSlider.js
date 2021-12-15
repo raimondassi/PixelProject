@@ -32,11 +32,11 @@ export default function NonLinearSlider() {
     }
   };
   return (
-    <div style={{ width: '25%' }}>
+    <div style={{ width: '100%' }}>
     <div className="App">
       <h2>Select Color</h2>
       <section className="resposive example">
-        <HexColorPicker />
+        <HexColorPicker/>
       </section>
     </div>
   <Box sx={{ width: '100%' }}>

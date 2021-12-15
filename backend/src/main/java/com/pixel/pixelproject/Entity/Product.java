@@ -18,9 +18,11 @@ public class Product {
     private UUID id;
     @OneToMany
     private List<Pixel> pixels;
+    private String name;
 
-    public Product(List<Pixel> pixels) {
+    public Product(List<Pixel> pixels, String name) {
         this.pixels = pixels;
+        this.name=name;
     }
 
 }
