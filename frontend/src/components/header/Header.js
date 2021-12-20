@@ -16,7 +16,15 @@ export default () => {
     >
       <Toolbar sx={{ flexWrap: 'wrap' }}>
         <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          Company name
+          <Link
+            variant="button"
+            color="text.primary"
+            to="/"
+            sx={{my: 1, mx: 1.5, fontSize: 20}}
+            underline="none"
+            component={NavLink}>
+            Company name
+          </Link>
         </Typography>
         <nav>
           <Link

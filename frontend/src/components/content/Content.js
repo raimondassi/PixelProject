@@ -17,6 +17,7 @@ export default () => {
         <Route path="/products/create" element={<Product/>}/>
         <Route path="/users/registration" element={<UserRegistration/>}/>
         <Route path="/products/generate_picture" element={<PictureGeneration/>}/>
+        <Route path="/products/generate_picture" element={<PictureGeneration/>}/>
       </Routes>
     </>
   )

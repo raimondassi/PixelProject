@@ -40,7 +40,7 @@ public class ProductController {
     }
 
     @GetMapping(value = PRODUCT, produces = APPLICATION_JSON_VALUE)
-    public Product getProduct(@PathVariable(ID_VARIABLE) UUID id) {
+    public Product getProduct(@PathVariable(ID) UUID id) {
         return productService.getProduct(id);
     }
 
@@ -58,7 +58,7 @@ public class ProductController {
 
     @DeleteMapping(PRODUCT)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void deleteProduct(@PathVariable(ID_VARIABLE) UUID id) {
+    public void deleteProduct(@PathVariable(ID) UUID id) {
         productService.deleteProduct(id);
     }
 

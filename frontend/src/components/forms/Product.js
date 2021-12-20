@@ -61,14 +61,8 @@ export default () => (
                             placeholder="Type description..."
                             multiline
                             rows={3}/>
-            <TextFieldInput error={props.touched.quantity && props.errors.quantity}
-                            fieldName="quantity"
-                            label="Quantity:"
-                            placeholder="Type quantity..."/>
-            <TextFieldInput error={props.touched.price && props.errors.price}
-                            fieldName="price"
-                            label="Price:"
-                            placeholder="Type price..."/>
+            <Button > add new pixel</Button>
+            <div></div>
             {
               props.isSubmitting ? <CircularProgress/> : <Button type="submit">Submit</Button>
             }
