@@ -6,9 +6,7 @@ import org.springframework.http.HttpStatus;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-/**
- * @author Andrius Baltrunas
- */
+
 @Getter
 public class ExceptionResponse {
 

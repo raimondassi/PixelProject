@@ -3,9 +3,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Product from "../forms/Product";
 import {Route, Routes} from "react-router-dom";
-import Products from "../page/Products";
+import Products from "../../page/Products";
 import UserRegistration from "../forms/UserRegistration";
-import PictureGeneration from "../page/PictureGeneration";
+import PictureGeneration from "../../page/PictureGeneration";
 
 export default () => {
   return (

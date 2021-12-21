@@ -6,50 +6,56 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
+import {useEffect, useState} from "react";
+import {InputLabel, MenuItem, Select} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
+import {addPixelSize, removePixelSize} from "../../store/slice/pixelSizeSlice";
+import {getPixelSizes} from "../../api/restApi";
+
 
 export default function CheckboxesGroup() {
-  const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
-  });
 
-  const handleChange = (event) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked,
-    });
+  const [pixelSizes, setPixelSizes] = useState([]);
+  useEffect(() => {
+    getPixelSizes()
+      .then(({data}) => setPixelSizes(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const getPikselSizesfromHook=()=>{
+    return pixelSizes;
+  }
+
+  const [checkBoxState, setCheckBoxState] = React.useState({
+  });
+  const pixelSize = useSelector(state => state.pixelSize);
+  const dispatcher = useDispatch();
+  const onRemovePixelSize = (id) => dispatcher(removePixelSize(id));
+  const onAddPixelSizeToStore = (pixelSize) => dispatcher(addPixelSize(pixelSize));
+
+  const handleChange = (event, pixelSize) => {
+     //  if(checkBoxState===checked) {onAddPixelSizeToStore(pixelSize)};
   };
 
-  const { gilad, jason, antoine } = state;
-  const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
-
   return (
+    <>
     <Box sx={{ display: 'flex' }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Assign responsibility</FormLabel>
+        {/*<FormLabel component="legend">Select pixel size</FormLabel>*/}
         <FormGroup>
+          {pixelSizes.map((pixelSize)=>(
           <FormControlLabel
+            key={pixelSize.id}
             control={
-              <Checkbox checked={gilad} onChange={handleChange} name="gilad" />
+               <Checkbox onChange={handleChange(pixelSize)}/>
             }
-            label="Gilad Gray"
+            label={pixelSize.pixelSize}
           />
-          <FormControlLabel
-            control={
-              <Checkbox checked={jason} onChange={handleChange} name="jason" />
-            }
-            label="Jason Killian"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={antoine} onChange={handleChange} name="antoine" />
-            }
-            label="Antoine Llorca"
-          />
+          ))}
         </FormGroup>
-        <FormHelperText>Be careful</FormHelperText>
       </FormControl>
     </Box>
+    </>
   );
 }
+export {CheckboxesGroup}

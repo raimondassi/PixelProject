@@ -35,13 +35,10 @@ export default function NonLinearSlider() {
   const [color, setColor] = useState("");
   return (
     <div style={{width: '100%'}}>
-      <div>
-        spalva: {color}
-      </div>
       <div className="App">
         <h2>Select Color</h2>
+        <div>selected color: {color}</div>
         <section className="resposive example">
-
           <HexColorPicker onChange={setColor}/>
         </section>
       </div>

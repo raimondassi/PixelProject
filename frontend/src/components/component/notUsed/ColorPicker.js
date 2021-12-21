@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { HexColorPicker, RgbaColorPicker } from "react-colorful";
-import "../../color_picker.css";
+import "../../../color_picker.css";
 
 export default function App() {
 

@@ -25,13 +25,13 @@ public class SwaggerConfig {
     }
 
     private ApiInfo getSwaggerApiInfo() {
-        return new ApiInfo("Eshop API",
-                "Custom eshop api",
+        return new ApiInfo("Pixel API",
+                "Custom pixel api",
                 "1.0",
-                "Eshop api terms",
-                new Contact("Andrius Baltrunas", "url", "abaltruas@gmail.com"),
-                "Eshop api license",
-                "Eshop api license URL",
+                "pixel api terms",
+                new Contact("Raimondas Siupienis", "url", "rarara@rara.com"),
+                "pixel api license",
+                "pixel api license URL",
                 Collections.emptyList());
     }
 

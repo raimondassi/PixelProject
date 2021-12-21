@@ -15,4 +15,5 @@ public interface ApiPath {
     String BLOBS = "/blobs";
     String GET_BLOB = BLOBS + "/{" + ID + "}";
     String PIXELSIZES="/pixelsizes";
+
 }
