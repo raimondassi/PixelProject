@@ -1,4 +1,4 @@
-import pixelSize from "./slice/pixelSizeSlice";
+import pixel from "./slice/pixelSlice";
 import localProduct from "./slice/localProductSlice"
 import colorPicker from "./slice/colorPickerSlice";
 import {logger} from "redux-logger/src";
@@ -7,7 +7,7 @@ import {configureStore} from "@reduxjs/toolkit";
 const buildStore = () => {
   const store = configureStore({
     reducer: {
-      pixelSize,
+      pixel,
       localProduct,
       colorPicker
     },

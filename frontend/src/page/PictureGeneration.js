@@ -5,18 +5,18 @@ import ColorAndSlider from '../components/component/ColorAndSlider'
 import {Button, Checkbox, FormControlLabel, Stack} from "@mui/material";
 import HelperText from "../components/component/HelperText";
 import {useDispatch, useSelector} from "react-redux";
-import {addOrRemovePixelSize} from "../store/slice/pixelSizeSlice";
+import {addOrRemovePixel} from "../store/slice/pixelSlice";
 
 export default function PictureGeneration() {
 
   const [selectedPixelSizes, setPixelSizes] = useState();
   const dispatch = useDispatch();
-  const pixelSizesInStore = useSelector(storeState => storeState.pixelSize);
+  const pixelInStore = useSelector(storeState => storeState.pixel);
   const colorPickerInStore = useSelector(storeState => storeState.colorPicker);
 
-  const onAddOrRemoveColorPicker = (id, size) => {
-    const pixelSize = {id: id, size: size};
-    dispatch(addOrRemovePixelSize(pixelSize));
+  const onAddOrRemovePixel = (id, size) => {
+    const pixel = {id: id, size: size, color:null, frequency:null};
+    dispatch(addOrRemovePixel(pixel));
   }
 
   return (
@@ -31,18 +31,18 @@ export default function PictureGeneration() {
           m: 1,
           bgcolor: 'background.paper'
         }}>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(11, 1)}/>} label="1 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(12, 2)}/>} label="2 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(13, 3)}/>} label="3 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(14, 4)}/>} label="4 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(21, 1)}/>} label="1 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(22, 2)}/>} label="2 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(23, 3)}/>} label="3 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(24, 4)}/>} label="4 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(31, 1)}/>} label="1 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(32, 2)}/>} label="2 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(33, 3)}/>} label="3 mm"/>
-          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemoveColorPicker(34, 4)}/>} label="4 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(11, 1)}/>} label="1 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(12, 2)}/>} label="2 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(13, 3)}/>} label="3 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(14, 4)}/>} label="4 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(21, 1)}/>} label="1 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(22, 2)}/>} label="2 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(23, 3)}/>} label="3 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(24, 4)}/>} label="4 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(31, 1)}/>} label="1 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(32, 2)}/>} label="2 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(33, 3)}/>} label="3 mm"/>
+          <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(34, 4)}/>} label="4 mm"/>
         </Box>
         <HelperText name="please select not more that 6 pcs"/>
       </div>
@@ -56,9 +56,9 @@ export default function PictureGeneration() {
           bgcolor: 'background.paper'
         }}>
 
-          {pixelSizesInStore.map((pixelSize) => (
+          {pixelInStore.map((pixel) => (
             <Box sx={{width: '90%'}}>
-              <ColorAndSlider size={pixelSize.size}/>
+              <ColorAndSlider size={pixel.size} id={pixel.id}/>
             </Box>
           ))}
 

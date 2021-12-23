@@ -4,12 +4,10 @@ import "../../color_picker.css";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
-import {useSelector} from "react-redux";
-
-
+import {useDispatch} from "react-redux";
+import {addColor, addPercentValue} from "../../store/slice/pixelSlice";
 
 function valueLabelFormat(value) {
-
 
   const units = ['%'];
 
@@ -28,17 +26,23 @@ function calculateValue(value) {
   return value;
 }
 
-
-
-export default function ColorAndSlider({size}) {
+export default function ColorAndSlider({size, id}) {
   const [value, setValue] = React.useState(10);
   const [color, setColor] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (event, newValue) => {
     if (typeof newValue === 'number') {
       setValue(newValue);
     }
+    const request = {frequency: newValue, id: id}
+    dispatch(addPercentValue(request));
   };
+  const onChangeColor = (color) => {
+    setColor(color);
+    const colorRequest = {color: color, id: id};
+    dispatch(addColor(colorRequest));
+  }
 
   return (
     <div style={{width: '100%'}}>
@@ -46,7 +50,8 @@ export default function ColorAndSlider({size}) {
         <h2>Selected pixel size: {size} mm </h2>
         <div>selected color: {color}</div>
         <section className="resposive example">
-          <HexColorPicker onChange={setColor}/>
+          <HexColorPicker onChange={onChangeColor}/>
+          {/*<HexColorPicker onChange={setColor}/>*/}
         </section>
       </div>
       <Box sx={{width: '100%'}}>
