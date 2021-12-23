@@ -13,41 +13,46 @@ import {addPixelSize, removePixelSize} from "../../store/slice/pixelSizeSlice";
 import {getPixelSizes} from "../../api/restApi";
 
 
-export default function CheckboxesGroup() {
+export default function PixelSizeSelector() {
 
   const [pixelSizes, setPixelSizes] = useState([]);
+
   useEffect(() => {
     getPixelSizes()
       .then(({data}) => setPixelSizes(data))
       .catch((error) => console.log(error));
   }, []);
 
-  const getPikselSizesfromHook=()=>{
-    return pixelSizes;
-  }
-
-  const [checkBoxState, setCheckBoxState] = React.useState({
-  });
   const pixelSize = useSelector(state => state.pixelSize);
   const dispatcher = useDispatch();
   const onRemovePixelSize = (id) => dispatcher(removePixelSize(id));
   const onAddPixelSizeToStore = (pixelSize) => dispatcher(addPixelSize(pixelSize));
 
-  const handleChange = (event, pixelSize) => {
-     //  if(checkBoxState===checked) {onAddPixelSizeToStore(pixelSize)};
+  const [checked, setChecked] = React.useState(true);
+  const handleChange = (event) => {
+
+     setChecked(event.target.checked);
+     onAddPixelSizeToStore(pixelSize);
   };
+
 
   return (
     <>
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      justifyContent: 'center',
+      p: 1,
+      m: 1,
+      bgcolor: 'background.paper'
+    }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        {/*<FormLabel component="legend">Select pixel size</FormLabel>*/}
         <FormGroup>
           {pixelSizes.map((pixelSize)=>(
           <FormControlLabel
-            key={pixelSize.id}
+            pixelKey={pixelSize.id}
             control={
-               <Checkbox onChange={handleChange(pixelSize)}/>
+        <Checkbox onChange={handleChange}/>
             }
             label={pixelSize.pixelSize}
           />
@@ -58,4 +63,9 @@ export default function CheckboxesGroup() {
     </>
   );
 }
-export {CheckboxesGroup}
+
+
+
+
+
+

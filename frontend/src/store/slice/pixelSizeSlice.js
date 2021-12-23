@@ -1,35 +1,23 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addLocalStorage, getLocalStorage} from "../../storage/localStorage";
+import {addLocalStorage} from "../../storage/localStorage";
 
 const pixelSizeSlice = createSlice({
   name: 'pixelSize',
   initialState: [],
   reducers: {
-    addPixelSize(pixelSizeState, action) {
+    addOrRemovePixelSize(request, action) {
       const pixelSize = action.payload;
-      pixelSizeState.push(pixelSize);
-        return pixelSizeState;
-    },
-    removePixelSize(pixelSizeState, {payload: id}) {
-      pixelSizeState.delete(id);
-      return pixelSizeState;
+      const existingPixelSize = request.find(p => p.id === pixelSize.id);
+      if (existingPixelSize) {
+      return request.filter(p => p.id !== pixelSize.id) //kam tas returnas
+     //    return request.delete(p => p.id === pixelSize.id)
+      } else {
+        request.push(pixelSize);
+      }
     }
   }
 });
 
-let prevPixelSize = [];
-const subscribePixelSizeToStore = (store) => {
-  store.subscribe(() => {
-    const pixelSize = store.getState().pixelSize;
-    if (prevPixelSize !== pixelSize) {
-      addLocalStorage('pixelSize', pixelSize);
-      prevPixelSize = pixelSize;
-    }
-  });
-}
-
-const loadPixelSizesFromLocalStorage = () => getLocalStorage('pixelSize') || [];
-
 export default pixelSizeSlice.reducer;
-export const {addPixelSize, removePixelSize} = pixelSizeSlice.actions;
-export {subscribePixelSizeToStore , loadPixelSizesFromLocalStorage}
+export const {addOrRemovePixelSize} = pixelSizeSlice.actions;
+

@@ -1,7 +1,6 @@
-import pixelSize, {loadPixelSizesFromLocalStorage, subscribePixelSizeToStore} from "./slice/pixelSizeSlice";
-import localProduct, {loadLocalProductsFromLocalStorage, subscribeLocalProductToStore} from "./slice/localProductSlice"
-import colorPicker, {loadColorPickersFromLocalStorage, subscribeColorPickerToStore} from "./slice/colorPickerSlice";
-
+import pixelSize from "./slice/pixelSizeSlice";
+import localProduct from "./slice/localProductSlice"
+import colorPicker from "./slice/colorPickerSlice";
 import {logger} from "redux-logger/src";
 import {configureStore} from "@reduxjs/toolkit";
 
@@ -14,18 +13,13 @@ const buildStore = () => {
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
     preloadedState: {
-      pixelSize: loadPixelSizesFromLocalStorage(),
-      localProduct: loadLocalProductsFromLocalStorage(),
-      colorPicker: loadColorPickersFromLocalStorage()
+      // localProduct: loadLocalProductsFromLocalStorage()
 
     }
   });
-
-  subscribePixelSizeToStore(store);
-  subscribeLocalProductToStore(store);
-  subscribeColorPickerToStore(store);
-
   return store;
 }
 
-export default buildStore;
+const store = buildStore();
+
+export default store;

@@ -28,8 +28,10 @@ const subscribeColorPickerToStore = (store) => {
   });
 }
 
-const loadColorPickersFromLocalStorage = () => getLocalStorage('colorPicker') || [];
+// const loadColorPickersFromLocalStorage = () => getLocalStorage('colorPicker') || [];
 
 export default colorPickerSlice.reducer;
 export const {addColorPicker, removeColorPicker} = colorPickerSlice.actions;
-export {subscribeColorPickerToStore , loadColorPickersFromLocalStorage}
+export {subscribeColorPickerToStore
+  // , loadColorPickersFromLocalStorage
+}

@@ -4,8 +4,7 @@ import Footer from "./components/footer/Footer";
 import {BrowserRouter} from "react-router-dom";
 import buildStore from "./store/store";
 import {Provider} from "react-redux";
-
-const store = buildStore();
+import store from "./store/store";
 
 function App() {
   return (

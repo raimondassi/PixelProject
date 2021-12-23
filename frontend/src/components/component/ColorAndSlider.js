@@ -4,8 +4,12 @@ import "../../color_picker.css";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
+import {useSelector} from "react-redux";
+
+
 
 function valueLabelFormat(value) {
+
 
   const units = ['%'];
 
@@ -24,19 +28,22 @@ function calculateValue(value) {
   return value;
 }
 
-export default function NonLinearSlider() {
+
+
+export default function ColorAndSlider({size}) {
   const [value, setValue] = React.useState(10);
+  const [color, setColor] = useState("");
 
   const handleChange = (event, newValue) => {
     if (typeof newValue === 'number') {
       setValue(newValue);
     }
   };
-  const [color, setColor] = useState("");
+
   return (
     <div style={{width: '100%'}}>
       <div className="App">
-        <h2>Select Color</h2>
+        <h2>Selected pixel size: {size} mm </h2>
         <div>selected color: {color}</div>
         <section className="resposive example">
           <HexColorPicker onChange={setColor}/>

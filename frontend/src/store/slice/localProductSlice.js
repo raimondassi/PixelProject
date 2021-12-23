@@ -26,8 +26,10 @@ const subscribeLocalProductToStore = (store) => {
   });
 }
 
-const loadLocalProductsFromLocalStorage = () => getLocalStorage('localProduct') || [];
+// const loadLocalProductsFromLocalStorage = () => getLocalStorage('localProduct') || [];
 
 export default localProductSlice.reducer;
 export const {addLocalProduct, removeLocalProduct} = localProductSlice.actions;
-export {subscribeLocalProductToStore , loadLocalProductsFromLocalStorage}
+export {subscribeLocalProductToStore
+  // , loadLocalProductsFromLocalStorage
+}
