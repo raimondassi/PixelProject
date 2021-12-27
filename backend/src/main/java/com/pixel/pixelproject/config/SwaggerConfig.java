@@ -26,7 +26,7 @@ public class SwaggerConfig {
 
     private ApiInfo getSwaggerApiInfo() {
         return new ApiInfo("Pixel API",
-                "Custom pixel api",
+                "PixelGen api",
                 "1.0",
                 "pixel api terms",
                 new Contact("Raimondas Siupienis", "url", "rarara@rara.com"),

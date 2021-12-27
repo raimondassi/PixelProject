@@ -4,11 +4,8 @@ import com.pixel.pixelproject.Entity.*;
 import com.pixel.pixelproject.service.ImageGenerationService;
 import com.pixel.pixelproject.service.OrderService;
 import com.pixel.pixelproject.service.PixelService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import static com.pixel.pixelproject.Controller.ApiPath.*;
 
 import java.awt.image.BufferedImage;
@@ -22,18 +19,24 @@ public class PixelController {
     ImageGenerationService imageGenerationService;
     OrderService orderService;
 
+    public PixelController(PixelService pixelService, ImageGenerationService imageGenerationService, OrderService orderService) {
+        this.pixelService = pixelService;
+        this.imageGenerationService = imageGenerationService;
+        this.orderService = orderService;
+    }
+
     @GetMapping(PIXELSIZES)
         public List<PixelSize>  getPixelSizes(){
 return pixelService.getPixelSizes();
     }
 
     @PostMapping(PICTURE)
-    public BufferedImage generatePicture(@RequestBody List<Pixel> hexs){
+    public String generatePicture(@RequestBody List<PixelDto> hexs){
         return imageGenerationService.generatePicture(hexs);
     }
 
     @PostMapping(ORDER)
-    public void generateOrder(List<Pixel> hexs, Client client){
+    public void generateOrder(List<PixelDto> hexs, Client client){
         orderService.createOrder(hexs,client);
     }
 

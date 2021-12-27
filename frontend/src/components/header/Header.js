@@ -16,7 +16,7 @@ export default () => {
     >
       <Toolbar sx={{ flexWrap: 'wrap' }}>
         <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          <Link
+          <Button
             variant="button"
             color="text.primary"
             to="/products/generate_picture"
@@ -24,17 +24,17 @@ export default () => {
             underline="none"
             component={NavLink}>
             PixelGen
-          </Link>
+          </Button>
         </Typography>
         <nav>
-          <Link
+          <Button
             variant="button"
             color="text.primary"
             to="/users/registration"
             sx={{ my: 1, mx: 1.5 }}
             component={NavLink}>
             Create new user
-          </Link>
+          </Button>
         </nav>
         <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
           Login

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import ColorAndSlider from '../components/component/ColorAndSlider'
 import {Button, Checkbox, FormControlLabel, Stack} from "@mui/material";
@@ -7,10 +7,6 @@ import HelperText from "../components/component/HelperText";
 import {useDispatch, useSelector} from "react-redux";
 import {addOrRemovePixel} from "../store/slice/pixelSlice";
 import {generatePicture} from "../api/restApi";
-import {image} from "../img/123.png"
-
-
-
 
 export default function PictureGeneration() {
 
@@ -19,15 +15,15 @@ export default function PictureGeneration() {
   const pixelInStore = useSelector(storeState => storeState.pixel);
 
   const onAddOrRemovePixel = (id, size) => {
-    const pixel = {id: id, size: size, color:"#000000", procentage:10};
+    const pixel = {id: id, size: size, color: "#000000", procentage: 10};
     dispatch(addOrRemovePixel(pixel));
 
+
   }
-  const [notification, setNotification] = useState({isVisible: false, message:'', severity: ''});
-  const [picture, setPicture]=useState();
+  const [notification, setNotification] = useState({isVisible: false, message: '', severity: ''});
+  const [picture, setPicture] = useState("");
 
-
-  function onGeneratePicture(pixelInStore) {
+  const onGeneratePicture = () => {
     generatePicture(pixelInStore)
       .then(({data}) => setPicture(data))
       .catch((error) => console.log(error))
@@ -36,7 +32,6 @@ export default function PictureGeneration() {
   function onCreateOrder(pixelInStore) {
 
   }
-
 
   return (
     <>
@@ -80,14 +75,15 @@ export default function PictureGeneration() {
               <ColorAndSlider size={pixel.size} id={pixel.id}/>
             </Box>
           ))}
-
         </Box>
 
-        <Stack spacing={2} direction="row" justifyContent="center">
-          <Button variant="contained" onClick={onGeneratePicture(pixelInStore)}>generate product view </Button>
-        </Stack>
+
+          <Stack spacing={2} direction="row" justifyContent="center">
+            <Button variant="contained" onClick={onGeneratePicture}>generate product view </Button>
+          </Stack>
         {console.log(pixelInStore)}
       </div>
+      {picture &&
       <div style={{width: '100%'}}>
         <Box sx={{
           display: 'flex',
@@ -96,16 +92,17 @@ export default function PictureGeneration() {
           m: 1,
           bgcolor: 'background.paper',
         }}>
-          <Box component="img" sx={{width: '90%', height: 300, borderRadius: 2}}>
-            {picture}
+          <Box component="img" sx={{width: '90%', height: 300, borderRadius: 2}}
+               src={`data:image/jpeg;base64,${picture}`}>
           </Box>
         </Box>
         <Stack spacing={2} direction="row" justifyContent="center">
-          <Button variant="contained" >save for later </Button>
-          <Button variant="contained" onClick={() => onCreateOrder(pixelInStore)} >make an order</Button>
+          <Button variant="contained">save for later </Button>
+          <Button variant="contained" onClick={() => onCreateOrder(pixelInStore)}>make an order</Button>
         </Stack>
         <HelperText name="please do not save more than 5 pictures"/>
       </div>
+      }
     </>
   );
 

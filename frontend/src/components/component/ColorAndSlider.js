@@ -30,6 +30,7 @@ export default function ColorAndSlider({size, id}) {
   const [value, setValue] = React.useState(10);
   const [color, setColor] = useState("");
   const dispatch = useDispatch();
+  // const color = useSelector(storeState => storeState.pixel);
 
   const handleChange = (event, newValue) => {
     if (typeof newValue === 'number') {
@@ -51,7 +52,6 @@ export default function ColorAndSlider({size, id}) {
         <div>selected color: {color}</div>
         <section className="resposive example">
           <HexColorPicker onChange={onChangeColor}/>
-          {/*<HexColorPicker onChange={setColor}/>*/}
         </section>
       </div>
       <Box sx={{width: '100%'}}>
