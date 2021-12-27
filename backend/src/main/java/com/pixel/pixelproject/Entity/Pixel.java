@@ -9,17 +9,21 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "pixels")
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class Pixel {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID uniqid;
+    private int id;
     private String color;
+    private int size;
     private double procentage;
-    @ManyToOne
-    private PixelSize pixelSize;
 
+    public Pixel(String color,  int size, double procentage) {
+        this.color = color;
+        this.procentage = procentage;
+        this.size = size;
+    }
 }

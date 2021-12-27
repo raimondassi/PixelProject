@@ -1,6 +1,7 @@
 package com.pixel.pixelproject.exception.data;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;

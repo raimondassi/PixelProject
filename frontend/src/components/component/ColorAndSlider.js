@@ -35,7 +35,7 @@ export default function ColorAndSlider({size, id}) {
     if (typeof newValue === 'number') {
       setValue(newValue);
     }
-    const request = {frequency: newValue, id: id}
+    const request = {procentage: newValue, id: id}
     dispatch(addPercentValue(request));
   };
   const onChangeColor = (color) => {

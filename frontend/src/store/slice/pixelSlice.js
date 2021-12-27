@@ -16,7 +16,7 @@ const pixelSlice = createSlice({
     addPercentValue(state, action) {
       const request = action.payload;
       const existingPixel = state.find(p => p.id === request.id);
-      existingPixel.frequency = request.frequency;
+      existingPixel.procentage = request.procentage;
     },
     addColor(state, action) {
       const color = action.payload;

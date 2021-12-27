@@ -19,22 +19,14 @@ export default () => {
           <Link
             variant="button"
             color="text.primary"
-            to="/"
+            to="/products/generate_picture"
             sx={{my: 1, mx: 1.5, fontSize: 20}}
             underline="none"
             component={NavLink}>
-            Company name
+            PixelGen
           </Link>
         </Typography>
         <nav>
-          <Link
-            variant="button"
-            color="text.primary"
-            to="/products/create"
-            sx={{ my: 1, mx: 1.5 }}
-            component={NavLink}>
-            Create new product
-          </Link>
           <Link
             variant="button"
             color="text.primary"
@@ -42,14 +34,6 @@ export default () => {
             sx={{ my: 1, mx: 1.5 }}
             component={NavLink}>
             Create new user
-          </Link>
-          <Link
-            variant="button"
-            color="text.primary"
-            to="/products/generate_picture"
-            sx={{ my: 1, mx: 1.5 }}
-            component={NavLink}>
-            Create picture
           </Link>
         </nav>
         <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
