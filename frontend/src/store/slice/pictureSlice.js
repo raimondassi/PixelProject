@@ -2,13 +2,12 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const pictureSlice = createSlice({
   name: 'picture',
-  initialState: [],
+  initialState: "",
   reducers: {
     addPicture(state, action) {
       const picture = action.payload;
-      state.push(picture);
-      // return state.filter(picture)
-      },
+       return picture;
+      }
     }
 });
 

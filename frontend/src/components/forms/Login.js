@@ -6,7 +6,9 @@ import {login} from "../../api/restApi";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addUser} from "../../store/slice/userSlice";
-import {useNavigate} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
+import * as React from "react";
+import HelperText from "../component/HelperText";
 
 const loginValidationScheme = Yup.object().shape({
     username: Yup.string().required(),
@@ -63,6 +65,13 @@ export default () => {
                             type="submit"
                             disabled={props.isSubmitting}>
                             Login</Button>
+                      <Button
+                        variant="outlined"
+                        sx={{ my: 1, mx: 1.5 }}
+                        to="/users/registration"
+                        component={NavLink}>
+                        New User?
+                      </Button>
                     </Form>
                 </Container>
             )}
