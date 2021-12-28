@@ -6,13 +6,8 @@ import Container from "@mui/material/Container";
 import '../../style.css'
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .required('Name is required'),
-  surname: Yup.string()
-    .required('Surname is required'),
-  email: Yup.string()
-    .email()
-    .required(),
+  loginName: Yup.string()
+    .required('User name is required'),
   password: Yup.string()
     .required('Password is required'),
   repeatPassword: Yup.string()
@@ -21,9 +16,7 @@ const validationSchema = Yup.object().shape({
 
 export default () => (
   <Formik initialValues={{
-    name: '',
-    surname: '',
-    email: '',
+    loginName: '',
     password: '',
     repeatPassword: ''
   }}
@@ -41,18 +34,10 @@ export default () => (
       <Container maxWidth="sm">
         <Paper elevation={3} sx={{p: 1}}>
           <Form className="product-form">
-            <TextFieldInput error={props.touched.name && !!props.errors.name}
-                            fieldName="name"
-                            label="Name:"
-                            placeholder="Type name..."/>
-            <TextFieldInput error={props.touched.surname && !!props.errors.surname}
-                            fieldName="surname"
-                            label="Surname:"
-                            placeholder="Type surname..."/>
-            <TextFieldInput error={props.touched.email && !!props.errors.email}
-                            fieldName="email"
-                            label="Email:"
-                            placeholder="Type email..."/>
+            <TextFieldInput error={props.touched.loginName && !!props.errors.loginName}
+                            fieldName="loginName"
+                            label="login name:"
+                            placeholder="Type login name..."/>
             <TextFieldInput error={props.touched.password && !!props.errors.password}
                             fieldName="password"
                             label="Password:"

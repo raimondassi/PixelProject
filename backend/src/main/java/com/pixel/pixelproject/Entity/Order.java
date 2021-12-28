@@ -1,11 +1,9 @@
 package com.pixel.pixelproject.Entity;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,13 +21,13 @@ public class Order {
     private List<Pixel> pixels;
     private LocalDateTime deliveryDate;
     private LocalDateTime orderDate;
-    private String name;
+    private String description;
 
-    public Order(Client client, List<Pixel> pixels, LocalDateTime deliveryDate, LocalDateTime orderDate, String name) {
+    public Order(Client client, List<Pixel> pixels, LocalDateTime deliveryDate, LocalDateTime orderDate, String description) {
         this.client = client;
         this.pixels = pixels;
         this.deliveryDate = deliveryDate;
         this.orderDate = orderDate;
-        this.name = name;
+        this.description = description;
     }
 }

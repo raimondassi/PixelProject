@@ -35,6 +35,14 @@ export default () => {
             component={NavLink}>
             Create new user
           </Button>
+          <Button
+            variant="button"
+            color="text.primary"
+            to="/products/order"
+            sx={{ my: 1, mx: 1.5 }}
+            component={NavLink}>
+            Create order
+          </Button>
         </nav>
         <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
           Login

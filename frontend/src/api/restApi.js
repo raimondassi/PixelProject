@@ -1,7 +1,9 @@
 import HTTP from "./index";
 
-const generatePicture = (data) => HTTP.post("/picture", data);
+const generatePicture = (pixelList) => HTTP.post("/picture", pixelList);
+const createOrder=(pixelsAndClient)=>HTTP.post("/order", pixelsAndClient);
+const login = (data) => HTTP.post('/login', data);
 
-export {generatePicture}
+export {generatePicture, createOrder, login}
 
 

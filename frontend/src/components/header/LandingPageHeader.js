@@ -27,7 +27,7 @@ function LandingPageHeader() {
       <div
         style={{
           backgroundImage:
-            "url(" + require("../../img/img/123.jpg").default + ")",
+            "url(" + require("../../img/123.png").default + ")",
         }}
         className="page-header"
         data-parallax={true}

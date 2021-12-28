@@ -7,8 +7,9 @@ const pictureSlice = createSlice({
     addPicture(state, action) {
       const picture = action.payload;
       state.push(picture);
-    },
-  }
+      // return state.filter(picture)
+      },
+    }
 });
 
 export default pictureSlice.reducer;
