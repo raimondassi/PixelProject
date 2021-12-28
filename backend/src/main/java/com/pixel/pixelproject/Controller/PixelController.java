@@ -13,7 +13,7 @@ import static com.pixel.pixelproject.Controller.ApiPath.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(ROOT)
+//@RequestMapping(ROOT)
 public class PixelController {
 
     PixelService pixelService;

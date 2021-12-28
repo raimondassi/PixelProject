@@ -1,6 +1,7 @@
 package com.pixel.pixelproject.Entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -14,12 +15,13 @@ import java.util.UUID;
 @Table(name = "roles")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue
     private UUID id;
-    private RoleName name;
+    private String name;
 
     @Override
     public String getAuthority() {

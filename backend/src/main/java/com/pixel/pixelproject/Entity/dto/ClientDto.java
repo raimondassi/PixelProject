@@ -1,11 +1,14 @@
 package com.pixel.pixelproject.Entity.dto;
 
 import com.pixel.pixelproject.Entity.User;
-import lombok.Data;
+import lombok.*;
 
 import java.util.UUID;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class ClientDto extends User {
 
     private UUID id;
