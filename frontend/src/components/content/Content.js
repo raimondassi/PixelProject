@@ -5,6 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import UserRegistration from "../forms/UserRegistration";
 import PictureGeneration from "../../page/PictureGeneration";
 import CreateOrder from "../forms/CreateOrder";
+import Login from "../forms/Login";
 
 export default () => {
   return (
@@ -15,6 +16,7 @@ export default () => {
         <Route path="/users/registration" element={<UserRegistration/>}/>
         <Route path="/products/generate_picture" element={<PictureGeneration/>}/>
         <Route path="/products/order" element={<CreateOrder/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </>
   )

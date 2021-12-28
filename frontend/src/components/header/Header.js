@@ -43,10 +43,14 @@ export default () => {
             component={NavLink}>
             Create order
           </Button>
+            <Button
+              variant="outlined"
+              sx={{ my: 1, mx: 1.5 }}
+              to="/login"
+              component={NavLink}>
+              Login
+            </Button>
         </nav>
-        <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-          Login
-        </Button>
       </Toolbar>
     </AppBar>
   )

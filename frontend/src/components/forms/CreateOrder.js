@@ -9,6 +9,7 @@ import * as React from "react";
 import {useState} from "react";
 import Box from "@mui/material/Box";
 import {useSelector} from "react-redux";
+import HelperText from "../component/HelperText";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -125,6 +126,7 @@ export default () => {
                 {
                   props.isSubmitting ? <CircularProgress/> : <Button variant="outlined" type="submit">Submit</Button>
                 }
+                <HelperText name="Delivery period is 30 days from order"/>
               </Form>
             </Paper>
           </Container>

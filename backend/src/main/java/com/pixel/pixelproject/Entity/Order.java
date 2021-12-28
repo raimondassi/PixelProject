@@ -14,7 +14,7 @@ public class Order {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
     @OneToOne
     private Client client;
     @OneToMany

@@ -1,6 +1,6 @@
 package com.pixel.pixelproject.service;
 
-import com.pixel.pixelproject.Entity.PixelDto;
+import com.pixel.pixelproject.Entity.dto.PixelDto;
 import com.pixel.pixelproject.Entity.RGBColorAndFraction;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;

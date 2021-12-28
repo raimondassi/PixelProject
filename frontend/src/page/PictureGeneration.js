@@ -9,6 +9,7 @@ import {addOrRemovePixel} from "../store/slice/pixelSlice";
 import {generatePicture} from "../api/restApi";
 import {createOrder} from "../api/restApi";
 import {addPicture} from "../store/slice/pictureSlice";
+import {NavLink} from "react-router-dom";
 
 export default function PictureGeneration() {
 
@@ -37,6 +38,7 @@ export default function PictureGeneration() {
 
     const onCreateOrder = (product, helpers) => {
       dispatch(addPicture(picture));
+
       // createOrder(product)
       //   .then(({status}) => {
       //     if(status === 201) {
@@ -94,7 +96,9 @@ export default function PictureGeneration() {
 
 
           <Stack spacing={2} direction="row" justifyContent="center">
-            <Button variant="contained" onClick={onGeneratePicture}>generate product view </Button>
+            <Button variant="contained"
+                    onClick={onGeneratePicture}>
+            generate product view </Button>
           </Stack>
         {console.log(pixelInStore)}
       </div>
@@ -113,7 +117,12 @@ export default function PictureGeneration() {
         </Box>
         <Stack spacing={2} direction="row" justifyContent="center">
           <Button variant="contained">save for later </Button>
-          <Button variant="contained" onClick={() => onCreateOrder()}>create an order</Button>
+          <Button variant="contained"
+                  onClick={() => onCreateOrder()}
+                    to="/products/order"
+                    component={NavLink}>
+            create an order
+          </Button>
         </Stack>
         <HelperText name="please do not save more than 5 pictures"/>
       </div>

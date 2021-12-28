@@ -1,6 +1,6 @@
 package com.pixel.pixelproject.Entity;
 
-import lombok.AllArgsConstructor;
+import com.pixel.pixelproject.Entity.dto.PixelDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
