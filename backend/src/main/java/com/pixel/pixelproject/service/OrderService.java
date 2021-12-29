@@ -29,8 +29,9 @@ public class OrderService {
        Client client=new Client();
       LocalDateTime orderedDate = LocalDateTime.now();
       LocalDateTime deliveryDate=orderedDate.plusDays(30);
+      String picture=orderDto.getPicture();
 
- Order order =new Order(client, pixels, deliveryDate, orderedDate, "");
+ Order order =new Order(client, pixels, deliveryDate, orderedDate, "", picture);
  orderRepository.save(order);
 
    }

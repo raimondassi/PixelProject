@@ -11,10 +11,9 @@ import java.util.List;
 @Setter
 public class OrderDto {
 
-    private Client client;
+    private ClientDto client;
     private List<PixelDto> pixels;
-    private LocalDateTime deliveryDate;
-    private LocalDateTime orderDate;
     private String description;
+    private String picture;
 
 }

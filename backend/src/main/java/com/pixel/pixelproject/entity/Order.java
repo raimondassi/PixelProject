@@ -25,12 +25,14 @@ public class Order {
     private LocalDateTime deliveryDate;
     private LocalDateTime orderDate;
     private String description;
+    private String picture;
 
-    public Order(Client client, List<Pixel> pixels, LocalDateTime deliveryDate, LocalDateTime orderDate, String description) {
+    public Order(Client client, List<Pixel> pixels, LocalDateTime deliveryDate, LocalDateTime orderDate, String description, String picture) {
         this.client = client;
         this.pixels = pixels;
         this.deliveryDate = deliveryDate;
         this.orderDate = orderDate;
         this.description = description;
+        this.picture=picture;
     }
 }

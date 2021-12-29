@@ -33,8 +33,32 @@ const validationSchema = Yup.object().shape({
     .required('Please give any description to your order')
 });
 export default () => {
+
+
   const picture=useSelector(store=>store.picture);
-  const pixels=useSelector(store=>store.pixels);
+  const pixels=useSelector(store=>store.pixel);
+
+  const [notification, setNotification] = useState({isVisible: false, message:'', severity: ''});
+
+  const onCreateOrder = (values, helpers) => {
+    let requestObject={
+      "client":values,
+      "pixels": pixels,
+      "picture":picture,
+      "description":values.description
+    }
+    console.log(requestObject)
+    createOrder(requestObject)
+      .then(({status}) => {
+        if(status === 201) {
+          setNotification({isVisible: true, message: 'Order created successfully', severity: 'success'});
+          helpers.resetForm();
+        }
+      })
+      .catch((error) => setNotification({isVisible: true, message: 'Something goes wrong', severity: 'error'}))
+      .finally(() => helpers.setSubmitting(false));
+  }
+
   return(
     <>
       <div style={{width: '100%', textAlign:'center',marginTop:3}}>
@@ -64,25 +88,7 @@ export default () => {
         description:''
       }}
 
-              onSubmit={(values, helpers) => {
-                helpers.setSubmitting(true);
-                setTimeout(() => {
-                  helpers.setSubmitting(false);
-                }, 5000);
-                const [notification, setNotification] = useState({isVisible: false, message:'', severity: ''});
-                createOrder(values)
-                  .then(({status}) => {
-                    console.log(values, picture, pixels)
-                    if(status === 201) {
-                      setNotification({isVisible: true, message: 'Order created successfully', severity: 'success'});
-                      helpers.resetForm();
-                    }
-                  })
-                  .catch((error) => setNotification({isVisible: true, message: 'Something goes wrong', severity: 'error'}))
-                  .finally(() => helpers.setSubmitting(false));
-              }}
-
-
+              onSubmit={onCreateOrder}
               validationSchema={validationSchema}>
         {props => (
           <Container maxWidth="sm">

@@ -29,7 +29,7 @@ export default () => {
                     user: data,
                     jwtToken: headers.authorization
                 }));
-                navigate('/');
+                navigate('/generate_picture');
             })
             .catch((response) => setError(true))
             .finally(() => helpers.setSubmitting(false));

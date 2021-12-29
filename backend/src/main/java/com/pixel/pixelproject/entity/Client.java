@@ -31,17 +31,15 @@ public class Client {
     private String phone;
     private String email;
 
-//    public Client(String loginName, String password, String name, String surname, String country, String city, String street, String zipCode, String phone, String email) {
-//        super(loginName, password);
-//        this.name = name;
-//        this.surname = surname;
-//        this.country = country;
-//        this.city = city;
-//        this.street = street;
-//        this.zipCode = zipCode;
-//        this.phone = phone;
-//        this.email = email;
-//
-//    }
-
+    public Client(User user, String name, String surname, String country, String city, String street, String zipCode, String phone, String email) {
+        this.user = user;
+        this.name = name;
+        this.surname = surname;
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.zipCode = zipCode;
+        this.phone = phone;
+        this.email = email;
+    }
 }

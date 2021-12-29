@@ -21,9 +21,7 @@ export default () => (
     repeatPassword: ''
   }}
           onSubmit={(values, helpers) => {
-
             helpers.setSubmitting(true);
-
             setTimeout(() => {
               helpers.setSubmitting(false);
             }, 5000);

@@ -17,12 +17,12 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService userDetailsService;
+//    private final UserDetailsService userDetailsService;
     private final JwtService jwtService;
 
     public SecurityConfig(
             UserDetailsService userDetailsService, JwtService jwtService) {
-        this.userDetailsService = userDetailsService;
+//        this.userDetailsService = userDetailsService;
         this.jwtService = jwtService;
     }
 
@@ -47,12 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtService));
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
-
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService)
+//                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+//
+//    }
 
 
 }
