@@ -3,6 +3,7 @@ package com.pixel.pixelproject.config;
 import com.pixel.pixelproject.security.JwtAuthenticationFilter;
 import com.pixel.pixelproject.security.JwtAuthorizationFilter;
 import com.pixel.pixelproject.security.service.JwtService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -17,12 +18,12 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    private final UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
     private final JwtService jwtService;
 
     public SecurityConfig(
             UserDetailsService userDetailsService, JwtService jwtService) {
-//        this.userDetailsService = userDetailsService;
+        this.userDetailsService = userDetailsService;
         this.jwtService = jwtService;
     }
 
@@ -35,10 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // without session
                 .and()
                 .authorizeRequests()
-                    .antMatchers(HttpMethod.GET, "/api")
+                    .antMatchers(HttpMethod.GET, "/api/picture","/swagger-ui/**", "/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html**", "/webjars/**")
+                        .permitAll()
+                    .antMatchers(HttpMethod.POST,"/api/createuser","/api/picture")
                         .permitAll()
                     .anyRequest()
-                        .permitAll()
+                        .authenticated()
                 .and()
                 .exceptionHandling()
                     .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
@@ -47,12 +50,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtService));
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService)
-//                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
-//
-//    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+
+    }
 
 
 }

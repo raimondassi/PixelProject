@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.pixel.pixelproject.controller.ApiPath.LOGIN;
+import static com.pixel.pixelproject.controller.ApiPath.ROOT;
 
 @RestController
 @RequestMapping(LOGIN)

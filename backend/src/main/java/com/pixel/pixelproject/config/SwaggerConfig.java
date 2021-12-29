@@ -34,5 +34,4 @@ public class SwaggerConfig {
                 "pixel api license URL",
                 Collections.emptyList());
     }
-
 }

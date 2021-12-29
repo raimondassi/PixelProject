@@ -1,9 +1,7 @@
 import axios from "axios";
 import store from "../store/store";
 
-const HTTP = axios.create({
-    baseURL: '/api'
-});
+const HTTP = axios.create();
 
 HTTP.interceptors.request.use(config => {
     const token = store.getState().user.jwtToken;

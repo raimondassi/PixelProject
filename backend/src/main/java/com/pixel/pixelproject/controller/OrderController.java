@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.pixel.pixelproject.controller.ApiPath.ORDER;
+import static com.pixel.pixelproject.controller.ApiPath.ROOT;
 
 @RestController
+@RequestMapping(ROOT + ORDER)
 public class OrderController {
 
     OrderService orderService;
@@ -18,7 +20,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping(ORDER)
+    @PostMapping
     public void createOrder(@RequestBody OrderDto orderDto){
        orderService.createOrder(orderDto);
     }

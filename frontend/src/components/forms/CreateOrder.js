@@ -62,7 +62,7 @@ export default () => {
   return(
     <>
       <div style={{width: '100%', textAlign:'center',marginTop:3}}>
-        <h2>Product you will order</h2>
+          <h2>Product you will order</h2>
       <Box sx={{
         display: 'flex',
         justifyContent: 'space-evenly',

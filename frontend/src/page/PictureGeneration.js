@@ -7,7 +7,6 @@ import HelperText from "../components/component/HelperText";
 import {useDispatch, useSelector} from "react-redux";
 import {addOrRemovePixel} from "../store/slice/pixelSlice";
 import {generatePicture} from "../api/restApi";
-import {createOrder} from "../api/restApi";
 import {addPicture} from "../store/slice/pictureSlice";
 import {NavLink} from "react-router-dom";
 
@@ -17,16 +16,14 @@ export default function PictureGeneration() {
   const dispatch = useDispatch();
   const pixelInStore = useSelector(storeState => storeState.pixel);
   const [picture, setPicture] = useState("");
-  const [notification, setNotification] = useState({isVisible: false, message:'', notificationStatus: ''});
+  const [notification, setNotification] = useState({isVisible: false, message: '', notificationStatus: ''});
+  const user = useSelector(state => state.user.user);
 
   const onAddOrRemovePixel = (id, size) => {
     const pixel = {id: id, size: size, color: "#000000", procentage: 10};
     dispatch(addOrRemovePixel(pixel));
 
-
   }
-
-
 
   const onGeneratePicture = () => {
     generatePicture(pixelInStore)
@@ -35,19 +32,18 @@ export default function PictureGeneration() {
 
   }
 
+  const onCreateOrder = (product, helpers) => {
+    dispatch(addPicture(picture));
 
-    const onCreateOrder = (product, helpers) => {
-      dispatch(addPicture(picture));
-
-      // createOrder(product)
-      //   .then(({status}) => {
-      //     if(status === 201) {
-      //       setNotification({isVisible: true, message: 'Product created successfully', notificationStatus: 'success'});
-      //       helpers.resetForm();
-      //     }
-      //   })
-      //   .catch((error) => setNotification({isVisible: true, message: 'Something goes wrong', notificationStatus: 'error'}))
-      //   .finally(() => helpers.setSubmitting(false));
+    // createOrder(product)
+    //   .then(({status}) => {
+    //     if(status === 201) {
+    //       setNotification({isVisible: true, message: 'Product created successfully', notificationStatus: 'success'});
+    //       helpers.resetForm();
+    //     }
+    //   })
+    //   .catch((error) => setNotification({isVisible: true, message: 'Something goes wrong', notificationStatus: 'error'}))
+    //   .finally(() => helpers.setSubmitting(false));
   }
 
   return (
@@ -95,11 +91,11 @@ export default function PictureGeneration() {
         </Box>
 
 
-          <Stack spacing={2} direction="row" justifyContent="center">
-            <Button variant="contained"
-                    onClick={onGeneratePicture}>
+        <Stack spacing={2} direction="row" justifyContent="center">
+          <Button variant="contained"
+                  onClick={onGeneratePicture}>
             generate product view </Button>
-          </Stack>
+        </Stack>
         {console.log(pixelInStore)}
       </div>
       {picture &&
@@ -115,16 +111,20 @@ export default function PictureGeneration() {
                src={`data:image/jpeg;base64,${picture}`}>
           </Box>
         </Box>
+        {
+        user?
         <Stack spacing={2} direction="row" justifyContent="center">
           <Button variant="contained">save for later </Button>
           <Button variant="contained"
                   onClick={() => onCreateOrder()}
-                    to="/order"
-                    component={NavLink}>
+                  to="/order"
+                  component={NavLink}>
             create an order
           </Button>
         </Stack>
-        <HelperText name="please do not save more than 5 pictures"/>
+            :
+            <HelperText name="If you want to order or save picture you have to login"/>
+      }
       </div>
       }
     </>

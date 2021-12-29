@@ -9,9 +9,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ClientDto extends User {
+public class ClientDto extends UserDto {
 
-    private UUID id;
     private String name;
     private String surname;
     private String country;
