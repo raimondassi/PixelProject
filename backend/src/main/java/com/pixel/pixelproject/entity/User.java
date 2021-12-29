@@ -1,8 +1,9 @@
-package com.pixel.pixelproject.Entity;
+package com.pixel.pixelproject.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,19 +21,18 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue
+    @Column(columnDefinition = "VARCHAR(36)", updatable = false)
+    @Type(type = "uuid-char")
     private UUID id;
-    private String loginName;
+    private String username;
     private String password;
-    private String repeatPassword;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    public User(String loginName, String password, String repeatPassword) {
-        this.loginName = loginName;
+    public User(String loginName, String password) {
+        this.username = loginName;
         this.password = password;
-        this.repeatPassword = repeatPassword;
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

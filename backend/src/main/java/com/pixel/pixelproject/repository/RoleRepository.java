@@ -1,6 +1,6 @@
 package com.pixel.pixelproject.repository;
 
-import com.pixel.pixelproject.Entity.Role;
+import com.pixel.pixelproject.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

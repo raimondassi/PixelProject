@@ -1,7 +1,6 @@
 package com.pixel.pixelproject.service;
 
-import com.pixel.pixelproject.Entity.PixelSize;
-import com.pixel.pixelproject.repository.PixelRepository;
+import com.pixel.pixelproject.entity.PixelSize;
 import com.pixel.pixelproject.repository.PixelSizeRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;

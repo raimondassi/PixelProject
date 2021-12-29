@@ -30,18 +30,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf() //cross-site request forgery
-                .disable()
+                    .disable()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // without session
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // without session
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api")
-                .permitAll()
-                .anyRequest()
-                .permitAll()
+                    .antMatchers(HttpMethod.GET, "/api")
+                        .permitAll()
+                    .anyRequest()
+                        .permitAll()
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                    .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 .and()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtService))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtService));
@@ -51,5 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+
     }
+
+
 }

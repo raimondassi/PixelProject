@@ -1,14 +1,12 @@
-package com.pixel.pixelproject.Entity;
+package com.pixel.pixelproject.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -20,6 +18,8 @@ public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue
+    @Column(columnDefinition = "VARCHAR(36)", updatable = false)
+    @Type(type = "uuid-char")
     private UUID id;
     private String name;
 

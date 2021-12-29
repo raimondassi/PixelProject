@@ -1,6 +1,6 @@
-package com.pixel.pixelproject.Entity.dto;
+package com.pixel.pixelproject.dto;
 
-import com.pixel.pixelproject.Entity.User;
+import com.pixel.pixelproject.entity.User;
 import lombok.*;
 
 import java.util.UUID;

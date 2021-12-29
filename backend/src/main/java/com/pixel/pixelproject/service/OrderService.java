@@ -1,10 +1,10 @@
 package com.pixel.pixelproject.service;
 
-import com.pixel.pixelproject.Entity.Client;
-import com.pixel.pixelproject.Entity.Order;
-import com.pixel.pixelproject.Entity.Pixel;
-import com.pixel.pixelproject.Entity.dto.OrderDto;
-import com.pixel.pixelproject.Entity.dto.PixelDto;
+import com.pixel.pixelproject.entity.Client;
+import com.pixel.pixelproject.entity.Order;
+import com.pixel.pixelproject.entity.Pixel;
+import com.pixel.pixelproject.dto.OrderDto;
+import com.pixel.pixelproject.dto.PixelDto;
 import com.pixel.pixelproject.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 

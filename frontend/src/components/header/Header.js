@@ -19,7 +19,7 @@ export default () => {
           <Button
             variant="button"
             color="text.primary"
-            to="/products/generate_picture"
+            to="/generate_picture"
             sx={{my: 1, mx: 1.5, fontSize: 20}}
             underline="none"
             component={NavLink}>
@@ -38,7 +38,7 @@ export default () => {
           <Button
             variant="button"
             color="text.primary"
-            to="/products/order"
+            to="/order"
             sx={{ my: 1, mx: 1.5 }}
             component={NavLink}>
             Create order

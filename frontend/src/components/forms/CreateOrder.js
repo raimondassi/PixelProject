@@ -34,6 +34,7 @@ const validationSchema = Yup.object().shape({
 });
 export default () => {
   const picture=useSelector(store=>store.picture);
+  const pixels=useSelector(store=>store.pixels);
   return(
     <>
       <div style={{width: '100%', textAlign:'center',marginTop:3}}>
@@ -71,6 +72,7 @@ export default () => {
                 const [notification, setNotification] = useState({isVisible: false, message:'', severity: ''});
                 createOrder(values)
                   .then(({status}) => {
+                    console.log(values, picture, pixels)
                     if(status === 201) {
                       setNotification({isVisible: true, message: 'Order created successfully', severity: 'success'});
                       helpers.resetForm();

@@ -1,6 +1,6 @@
-package com.pixel.pixelproject.Entity.dto;
+package com.pixel.pixelproject.dto;
 
-import com.pixel.pixelproject.Entity.Client;
+import com.pixel.pixelproject.entity.Client;
 import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;

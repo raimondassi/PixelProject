@@ -21,8 +21,10 @@ export default () => {
     const navigate = useNavigate();
 
     const onLogin = (loginData, helpers) => {
+      console.log(loginData)
         login(loginData)
             .then(({data, headers}) => {
+              console.log(data)
                 dispatch(addUser({
                     user: data,
                     jwtToken: headers.authorization

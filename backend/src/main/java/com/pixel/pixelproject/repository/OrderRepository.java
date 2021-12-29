@@ -1,7 +1,7 @@
 package com.pixel.pixelproject.repository;
 
 
-import com.pixel.pixelproject.Entity.Order;
+import com.pixel.pixelproject.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -119,7 +119,7 @@ export default function PictureGeneration() {
           <Button variant="contained">save for later </Button>
           <Button variant="contained"
                   onClick={() => onCreateOrder()}
-                    to="/products/order"
+                    to="/order"
                     component={NavLink}>
             create an order
           </Button>

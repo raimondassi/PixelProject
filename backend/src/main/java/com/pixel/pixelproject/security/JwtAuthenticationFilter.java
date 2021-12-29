@@ -1,7 +1,7 @@
 package com.pixel.pixelproject.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pixel.pixelproject.Entity.User;
+import com.pixel.pixelproject.entity.User;
 import com.pixel.pixelproject.security.dto.Login;
 import com.pixel.pixelproject.security.service.JwtService;
 import org.springframework.security.authentication.AuthenticationManager;

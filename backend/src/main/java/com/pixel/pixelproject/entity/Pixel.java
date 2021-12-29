@@ -1,8 +1,9 @@
-package com.pixel.pixelproject.Entity;
+package com.pixel.pixelproject.entity;
 
-import com.pixel.pixelproject.Entity.dto.PixelDto;
+import com.pixel.pixelproject.dto.PixelDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -15,6 +16,8 @@ public class Pixel {
 
     @Id
     @GeneratedValue
+    @Column(columnDefinition = "VARCHAR(36)", updatable = false)
+    @Type(type = "uuid-char")
     private UUID id;
     private String color;
     private int size;

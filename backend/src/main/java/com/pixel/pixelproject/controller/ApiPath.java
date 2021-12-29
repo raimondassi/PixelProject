@@ -1,4 +1,4 @@
-package com.pixel.pixelproject.Controller;
+package com.pixel.pixelproject.controller;
 
 public interface ApiPath {
 

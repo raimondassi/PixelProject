@@ -1,7 +1,7 @@
 package com.pixel.pixelproject.security.service;
 
-import com.pixel.pixelproject.Entity.Role;
-import com.pixel.pixelproject.Entity.User;
+import com.pixel.pixelproject.entity.Role;
+import com.pixel.pixelproject.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;

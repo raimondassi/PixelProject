@@ -14,8 +14,8 @@ export default () => {
       <CssBaseline />
       <Routes>
         <Route path="/users/registration" element={<UserRegistration/>}/>
-        <Route path="/products/generate_picture" element={<PictureGeneration/>}/>
-        <Route path="/products/order" element={<CreateOrder/>}/>
+        <Route path="/generate_picture" element={<PictureGeneration/>}/>
+        <Route path="/order" element={<CreateOrder/>}/>
         <Route path="/login" element={<Login/>}/>
       </Routes>
     </>

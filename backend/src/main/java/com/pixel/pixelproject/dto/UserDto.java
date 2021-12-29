@@ -1,23 +1,20 @@
-package com.pixel.pixelproject.Entity.dto;
+package com.pixel.pixelproject.dto;
 
-import com.pixel.pixelproject.Entity.Role;
-import com.pixel.pixelproject.Entity.User;
+import com.pixel.pixelproject.entity.Role;
+import com.pixel.pixelproject.entity.User;
 import lombok.*;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class UserDto {
 
-    private String loginName;
+    private String username;
     private Set<String> roles;
 
     public UserDto(User user) {
-        loginName = user.getUsername();
+        username = user.getUsername();
         roles = user.getRoles().stream().map(Role::getName).collect(Collectors.toSet());
     }
 }

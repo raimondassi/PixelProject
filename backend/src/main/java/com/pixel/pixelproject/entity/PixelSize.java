@@ -1,4 +1,4 @@
-package com.pixel.pixelproject.Entity;
+package com.pixel.pixelproject.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
