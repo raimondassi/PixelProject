@@ -12,10 +12,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.List;
+import java.util.*;
 
 @Service
 @NoArgsConstructor
@@ -23,8 +21,10 @@ public class ImageGenerationService {
 
     private static final int a = 250;//Alfa
     private final int pictureHeight = 320;
-    private final int pictureWidth = 640;
+    private final int pictureWidth = 1782;
     private final Color white = Color.WHITE;
+    Random random = new Random();
+
     private List<PixelDto> hexs;
     private List<RGBColorAndFraction> rgbs;
     private BufferedImage img = new BufferedImage(pictureWidth, pictureHeight, BufferedImage.TYPE_INT_ARGB);
@@ -69,19 +69,6 @@ public class ImageGenerationService {
                 Integer.valueOf(colorStr.substring(5, 7), 16));
     }
 
-    public void generateFraction1(RGBColorAndFraction rgb) {
-
-        for (int y = 0; y < pictureHeight; y++) {
-            for (int x = 0; x < pictureWidth; x++) {
-                int r = rgb.getColor().getRed(); //red
-                int g = rgb.getColor().getGreen(); //green
-                int b = rgb.getColor().getBlue(); //blue
-                int p = (a << 24) | (r << 16) | (g << 8) | b; //pixel
-                img.setRGB(x, y, p);
-            }
-        }
-    }
-
     public void generateWhiteBackground() {
         for (int y = 0; y < pictureHeight; y++) {
             for (int x = 0; x < pictureWidth; x++) {
@@ -94,15 +81,59 @@ public class ImageGenerationService {
         }
     }
 
-    public void generateFraction2(RGBColorAndFraction rgb) {
+    public void generateFraction1(RGBColorAndFraction rgb) {
+        Integer startPoint = random.nextInt(10);
+        Integer frequency = rgb.getProcentage();
+        for (int y = startPoint; y < pictureHeight; y++) {
+            for (int x = startPoint; x < pictureWidth; x++) {
+                int r = rgb.getColor().getRed(); //red
+                int g = rgb.getColor().getGreen(); //green
+                int b = rgb.getColor().getBlue(); //blue
+                int p = (a << 24) | (r << 16) | (g << 8) | b; //pixel
+                img.setRGB(x, y, p);
+            }
+        }
+    }
 
-        for (int y = 0; y < pictureHeight; y++) {
-            for (int x = 0; x < pictureWidth; x++) {
+    public void generateFraction2(RGBColorAndFraction rgb) {
+        Integer startPoint = random.nextInt(10);
+        for (int y = startPoint; y < pictureHeight; y = y + 5) {
+            for (int x = startPoint; x < pictureWidth; x = x + 5) {
                 int r = rgb.getColor().getRed();
                 int g = rgb.getColor().getGreen();
                 int b = rgb.getColor().getBlue();
                 int p = (a << 24) | (r << 16) | (g << 8) | b; //pixel
-                img.setRGB(x, y, p);
+                var i = 0;
+                var k = 0;
+                if (y < pictureHeight - 2 && x < pictureWidth - 2) {
+                    img.setRGB(x, y, p);
+                    img.setRGB(x + 1, y, p);
+                    img.setRGB(x, y + 1, p);
+                    img.setRGB(x + 1, y + 1, p);
+                }
+            }
+        }
+    }
+
+    public void generateFraction3(RGBColorAndFraction rgb) {
+        Integer startPoint = random.nextInt(10);
+        for (int y = startPoint; y < pictureHeight; y = y + 10) {
+            for (int x = startPoint; x < pictureWidth; x = x + 10) {
+                int r = rgb.getColor().getRed();
+                int g = rgb.getColor().getGreen();
+                int b = rgb.getColor().getBlue();
+                int p = (a << 24) | (r << 16) | (g << 8) | b; //pixel
+                if (y < pictureHeight - 3 && x < pictureWidth - 3) {
+                    img.setRGB(x, y, p);
+                    img.setRGB(x + 1, y, p);
+                    img.setRGB(x + 2, y, p);
+                    img.setRGB(x, y + 1, p);
+                    img.setRGB(x, y + 2, p);
+                    img.setRGB(x + 1, y + 1, p);
+                    img.setRGB(x + 1, y + 2, p);
+                    img.setRGB(x + 2, y + 1, p);
+                    img.setRGB(x + 2, y + 2, p);
+                }
             }
         }
     }
@@ -118,23 +149,10 @@ public class ImageGenerationService {
             if (rgb.getSize().equals(2)) {
                 generateFraction2(rgb);
             }
-
+            if (rgb.getSize().equals(3)) {
+                generateFraction3(rgb);
+            }
         }
-
-        //create random image pixel by pixel
-//            for(int y = 0; y < height; y++){
-//                for(int x = 0; x < width; x++){
-//                    int a = (int)(Math.random()*256); //alpha
-//                    int r = (int)(Math.random()*256); //red
-//                    int g = (int)(Math.random()*256); //green
-//                    int b = (int)(Math.random()*256); //blue
-//
-//                    int p = (a<<24) | (r<<16) | (g<<8) | b; //pixel
-//
-//                    img.setRGB(x, y, p);
-//                }
-//            }
-        //write image
 
         try {
             ImageIO.write(img, "png", os);

@@ -59,12 +59,11 @@ export default function PictureGeneration() {
           <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(33, 3)}/>} label="3 mm"/>
           <FormControlLabel control={<Checkbox onClick={() => onAddOrRemovePixel(34, 4)}/>} label="4 mm"/>
         </Box>
-        <HelperText name="please select not more that 6 pcs"/>
       </div>
       <div style={{width: '100%'}}>
         <Box sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(4, 1fr)',
           justifyContent: 'center',
           p: 1,
           m: 1,
@@ -94,7 +93,7 @@ export default function PictureGeneration() {
           m: 1,
           bgcolor: 'background.paper',
         }}>
-          <Box component="img" sx={{width: '90%', height: 300, borderRadius: 2}}
+          <Box component="img" sx={{width: '90%', height: 320, borderRadius: 2}}
                src={`data:image/jpeg;base64,${picture}`}>
           </Box>
         </Box>
