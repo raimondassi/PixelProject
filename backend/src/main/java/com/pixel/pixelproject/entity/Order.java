@@ -3,10 +3,12 @@ package com.pixel.pixelproject.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "orders")
@@ -17,7 +19,9 @@ public class Order {
 
     @Id
     @GeneratedValue
-    private Long id;
+    @Column(columnDefinition = "VARCHAR(36)", updatable = false)
+    @Type(type = "uuid-char")
+    private UUID id;
     @OneToOne
     private Client client;
     @OneToMany
@@ -25,14 +29,13 @@ public class Order {
     private LocalDateTime deliveryDate;
     private LocalDateTime orderDate;
     private String description;
-    private String picture;
 
-    public Order(Client client, List<Pixel> pixels, LocalDateTime deliveryDate, LocalDateTime orderDate, String description, String picture) {
+    public Order(Client client, List<Pixel> pixels, LocalDateTime deliveryDate, LocalDateTime orderDate, String description) {
         this.client = client;
         this.pixels = pixels;
         this.deliveryDate = deliveryDate;
         this.orderDate = orderDate;
         this.description = description;
-        this.picture=picture;
+
     }
 }

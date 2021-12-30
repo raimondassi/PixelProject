@@ -41,7 +41,7 @@ public class ImageGenerationService {
 
     public static void main(String args[]) throws IOException {
 
-        List<PixelDto> hexs = Arrays.asList(new PixelDto(22, "#6F7EBE", 2, 0.35), new PixelDto(11, "#85BC51", 1, 0.35), new PixelDto(12, "#85529F", 1, 0.2), new PixelDto(31, "#36BB9F", 3, 0.1));
+        List<PixelDto> hexs = Arrays.asList(new PixelDto(22, "#6F7EBE", 2, 35), new PixelDto(11, "#85BC51", 1, 35), new PixelDto(12, "#85529F", 1, 20), new PixelDto(31, "#36BB9F", 3, 10));
         ImageGenerationService imageGeneration = new ImageGenerationService(hexs);
         imageGeneration.generatePicture(hexs);
         try {

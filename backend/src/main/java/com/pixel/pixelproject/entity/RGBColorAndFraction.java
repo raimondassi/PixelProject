@@ -15,6 +15,6 @@ public class RGBColorAndFraction {
 
     Color color;
     Integer size;
-    Double procentage;
+    Integer procentage;
 
 }

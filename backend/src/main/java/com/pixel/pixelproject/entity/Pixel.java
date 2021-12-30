@@ -21,9 +21,9 @@ public class Pixel {
     private UUID id;
     private String color;
     private int size;
-    private double procentage;
+    private int procentage;
 
-    public Pixel(String color, int size, double procentage) {
+    public Pixel(String color, int size, int procentage) {
         this.color = color;
         this.procentage = procentage;
         this.size = size;

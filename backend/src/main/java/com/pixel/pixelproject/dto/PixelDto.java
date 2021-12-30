@@ -14,6 +14,6 @@ public class PixelDto {
     private int id;
     private String color;
     private int size;
-    private double procentage;
+    private int procentage;
 
 }
