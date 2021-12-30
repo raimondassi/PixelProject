@@ -1,2 +1,3 @@
 # PixelProject
-picture generation from diferent size dots(pixel groups)
+This program can be used for random picture generation(created by different color pixels).
+This can be usefull in such industry as artificial stone production, tiles production, to avoid manual testing of different colours...
