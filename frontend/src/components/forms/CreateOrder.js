@@ -37,6 +37,7 @@ export default () => {
 
   const picture=useSelector(store=>store.picture);
   const pixels=useSelector(store=>store.pixel);
+  const user=useSelector(store=>store.user);
 
   const [notification, setNotification] = useState({isVisible: false, message:'', severity: ''});
 
@@ -45,7 +46,8 @@ export default () => {
       "client":values,
       "pixels": pixels,
       "picture":picture,
-      "description":values.description
+      "description":values.description,
+      "username":user.user.username
     }
     console.log(requestObject)
     createOrder(requestObject)

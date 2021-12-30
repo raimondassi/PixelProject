@@ -15,5 +15,5 @@ public class OrderDto {
     private List<PixelDto> pixels;
     private String description;
     private String picture;
-
+    private String username;
 }

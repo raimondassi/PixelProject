@@ -38,4 +38,5 @@ public class UserService implements UserDetailsService {
                 user.setRoles(Set.of(new Role(UUID.fromString("60dbb7bb-99a0-42eb-a837-8be6b697c074"), "USER")));
         userRepository.save(user);
     }
+
 }

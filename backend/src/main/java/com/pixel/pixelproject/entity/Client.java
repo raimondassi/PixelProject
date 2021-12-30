@@ -1,5 +1,6 @@
 package com.pixel.pixelproject.entity;
 
+import com.pixel.pixelproject.dto.ClientDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,4 +32,15 @@ public class Client {
     private String phone;
     private String email;
 
+    public Client(ClientDto clientDto, User user) {
+        this.user = user;
+        this.name = clientDto.getName();
+        this.surname = clientDto.getSurname();
+        this.country = clientDto.getCountry();
+        this.city = clientDto.getCity();
+        this.street = clientDto.getStreet();
+        this.zipCode = clientDto.getZipCode();
+        this.phone = clientDto.getPhone();
+        this.email = clientDto.getEmail();
+    }
 }
