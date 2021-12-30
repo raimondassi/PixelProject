@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OrderService {
@@ -61,7 +62,14 @@ public class OrderService {
 
         Order order = new Order(client, pixelsFromRepo, deliveryDate, orderedDate, description);
         orderRepository.save(order);
+    }
 
+    public List<Order> findAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    public Order getOrder(UUID id) {
+        return orderRepository.findById(id).get();
     }
 
 }
