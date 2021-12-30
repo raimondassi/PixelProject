@@ -12,11 +12,9 @@ import {NavLink} from "react-router-dom";
 
 export default function PictureGeneration() {
 
-  const [selectedPixelSizes, setPixelSizes] = useState();
   const dispatch = useDispatch();
   const pixelInStore = useSelector(storeState => storeState.pixel);
   const [picture, setPicture] = useState("");
-  const [notification, setNotification] = useState({isVisible: false, message: '', notificationStatus: ''});
   const user = useSelector(state => state.user.user);
 
   const onAddOrRemovePixel = (id, size) => {
@@ -34,16 +32,6 @@ export default function PictureGeneration() {
 
   const onCreateOrder = (product, helpers) => {
     dispatch(addPicture(picture));
-
-    // createOrder(product)
-    //   .then(({status}) => {
-    //     if(status === 201) {
-    //       setNotification({isVisible: true, message: 'Product created successfully', notificationStatus: 'success'});
-    //       helpers.resetForm();
-    //     }
-    //   })
-    //   .catch((error) => setNotification({isVisible: true, message: 'Something goes wrong', notificationStatus: 'error'}))
-    //   .finally(() => helpers.setSubmitting(false));
   }
 
   return (
@@ -90,13 +78,12 @@ export default function PictureGeneration() {
           ))}
         </Box>
 
-
         <Stack spacing={2} direction="row" justifyContent="center">
           <Button variant="contained"
                   onClick={onGeneratePicture}>
-            generate product view </Button>
+            generate product view
+          </Button>
         </Stack>
-        {console.log(pixelInStore)}
       </div>
       {picture &&
       <div style={{width: '100%'}}>
@@ -112,19 +99,19 @@ export default function PictureGeneration() {
           </Box>
         </Box>
         {
-        user?
-        <Stack spacing={2} direction="row" justifyContent="center">
-          <Button variant="contained">save for later </Button>
-          <Button variant="contained"
-                  onClick={() => onCreateOrder()}
-                  to="/order"
-                  component={NavLink}>
-            create an order
-          </Button>
-        </Stack>
+          user ?
+            <Stack spacing={2} direction="row" justifyContent="center">
+              <Button variant="contained">save for later </Button>
+              <Button variant="contained"
+                      onClick={() => onCreateOrder()}
+                      to="/order"
+                      component={NavLink}>
+                create an order
+              </Button>
+            </Stack>
             :
             <HelperText name="If you want to order or save picture you have to login"/>
-      }
+        }
       </div>
       }
     </>

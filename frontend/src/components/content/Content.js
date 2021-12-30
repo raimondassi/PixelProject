@@ -10,8 +10,8 @@ import Login from "../forms/Login";
 export default () => {
   return (
     <>
-      <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
-      <CssBaseline />
+      <GlobalStyles styles={{ul: {margin: 0, padding: 0, listStyle: 'none'}}}/>
+      <CssBaseline/>
       <Routes>
         <Route path="/users/registration" element={<UserRegistration/>}/>
         <Route path="/generate_picture" element={<PictureGeneration/>}/>

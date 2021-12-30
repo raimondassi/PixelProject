@@ -1,8 +1,10 @@
 package com.pixel.pixelproject.dto;
 
-import com.pixel.pixelproject.entity.Client;
-import lombok.*;
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 
 @AllArgsConstructor

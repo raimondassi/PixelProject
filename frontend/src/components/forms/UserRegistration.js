@@ -1,10 +1,10 @@
 import {Form, Formik} from 'formik';
-import {Button, CircularProgress, Paper} from '@mui/material';
+import {Button, Paper} from '@mui/material';
 import * as Yup from 'yup';
 import TextFieldInput from "./TextFieldInput";
 import Container from "@mui/material/Container";
 import '../../style.css'
-import {createNewUser, createOrder, login} from "../../api/restApi";
+import {createNewUser} from "../../api/restApi";
 import {useState} from "react";
 
 const validationSchema = Yup.object().shape({
@@ -17,13 +17,12 @@ const validationSchema = Yup.object().shape({
 });
 
 export default () => {
-  const [notification, setNotification] = useState({isVisible: false, message:'', severity: ''});
+  const [notification, setNotification] = useState({isVisible: false, message: '', severity: ''});
 
   const onCreateNewUser = (values, helpers) => {
-    console.log(values)
     createNewUser(values)
       .then(({status}) => {
-        if(status === 201) {
+        if (status === 201) {
           setNotification({isVisible: true, message: 'User created successfully', severity: 'success'});
           helpers.resetForm();
         }
@@ -32,7 +31,7 @@ export default () => {
       .finally(() => helpers.setSubmitting(false));
   }
 
-  return(
+  return (
     <Formik initialValues={{
       username: '',
       password: '',

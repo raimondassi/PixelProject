@@ -1,8 +1,6 @@
 package com.pixel.pixelproject.service;
 
-
 import com.pixel.pixelproject.dto.CreateUserDto;
-import com.pixel.pixelproject.dto.UserDto;
 import com.pixel.pixelproject.entity.Role;
 import com.pixel.pixelproject.entity.User;
 import com.pixel.pixelproject.repository.UserRepository;
@@ -35,7 +33,7 @@ public class UserService implements UserDetailsService {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         User user = new User(createUserDto.getUsername(),
                 encoder.encode(createUserDto.getPassword()));
-                user.setRoles(Set.of(new Role(UUID.fromString("60dbb7bb-99a0-42eb-a837-8be6b697c074"), "USER")));
+        user.setRoles(Set.of(new Role(UUID.fromString("60dbb7bb-99a0-42eb-a837-8be6b697c074"), "USER")));
         userRepository.save(user);
     }
 

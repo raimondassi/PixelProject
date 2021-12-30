@@ -12,9 +12,7 @@ const buildStore = () => {
       user
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
-    preloadedState: {
-
-    }
+    preloadedState: {}
   });
   return store;
 }

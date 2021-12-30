@@ -1,9 +1,6 @@
 package com.pixel.pixelproject.controller;
 
 import com.pixel.pixelproject.dto.CreateUserDto;
-import com.pixel.pixelproject.dto.OrderDto;
-import com.pixel.pixelproject.dto.UserDto;
-import com.pixel.pixelproject.service.OrderService;
 import com.pixel.pixelproject.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,9 +21,8 @@ public class UserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody CreateUserDto createUserDto){
-       userService.createNewUser(createUserDto);
+    public void createUser(@RequestBody CreateUserDto createUserDto) {
+        userService.createNewUser(createUserDto);
     }
-
 
 }

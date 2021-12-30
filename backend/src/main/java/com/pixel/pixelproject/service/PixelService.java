@@ -17,7 +17,7 @@ public class PixelService {
         this.pixelRepository = pixelRepository;
     }
 
-    public List<PixelSize> getPixelSizes(){
+    public List<PixelSize> getPixelSizes() {
         return pixelRepository.findAll();
     }
 }

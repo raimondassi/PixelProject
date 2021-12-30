@@ -21,9 +21,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public void createOrder(@RequestBody OrderDto orderDto){
-       orderService.createOrder(orderDto);
+    public void createOrder(@RequestBody OrderDto orderDto) {
+        orderService.createOrder(orderDto);
     }
-
 
 }

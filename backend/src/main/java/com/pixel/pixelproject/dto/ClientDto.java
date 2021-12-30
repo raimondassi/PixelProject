@@ -1,15 +1,15 @@
 package com.pixel.pixelproject.dto;
 
-import com.pixel.pixelproject.entity.User;
-import lombok.*;
-
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class ClientDto{
+public class ClientDto {
 
     private String name;
     private String surname;

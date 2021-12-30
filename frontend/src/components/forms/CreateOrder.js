@@ -34,25 +34,23 @@ const validationSchema = Yup.object().shape({
 });
 export default () => {
 
+  const picture = useSelector(store => store.picture);
+  const pixels = useSelector(store => store.pixel);
+  const user = useSelector(store => store.user);
 
-  const picture=useSelector(store=>store.picture);
-  const pixels=useSelector(store=>store.pixel);
-  const user=useSelector(store=>store.user);
-
-  const [notification, setNotification] = useState({isVisible: false, message:'', severity: ''});
+  const [notification, setNotification] = useState({isVisible: false, message: '', severity: ''});
 
   const onCreateOrder = (values, helpers) => {
-    let requestObject={
-      "client":values,
+    let requestObject = {
+      "client": values,
       "pixels": pixels,
-      "picture":picture,
-      "description":values.description,
-      "username":user.user.username
+      "picture": picture,
+      "description": values.description,
+      "username": user.user.username
     }
-    console.log(requestObject)
     createOrder(requestObject)
       .then(({status}) => {
-        if(status === 201) {
+        if (status === 201) {
           setNotification({isVisible: true, message: 'Order created successfully', severity: 'success'});
           helpers.resetForm();
         }
@@ -61,33 +59,33 @@ export default () => {
       .finally(() => helpers.setSubmitting(false));
   }
 
-  return(
+  return (
     <>
-      <div style={{width: '100%', textAlign:'center',marginTop:3}}>
-          <h2>Product you will order</h2>
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        p: 1,
-        m: 1,
-        bgcolor: 'background.paper',
-      }}>
-        <Box component="img" sx={{width: '90%', height: 300, borderRadius: 2}}
-             src={`data:image/jpeg;base64,${picture}`}>
+      <div style={{width: '100%', textAlign: 'center', marginTop: 3}}>
+        <h2>Product you will order</h2>
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          p: 1,
+          m: 1,
+          bgcolor: 'background.paper',
+        }}>
+          <Box component="img" sx={{width: '90%', height: 300, borderRadius: 2}}
+               src={`data:image/jpeg;base64,${picture}`}>
+          </Box>
         </Box>
-      </Box>
-        </div>
+      </div>
 
       <Formik initialValues={{
         name: '',
         surname: '',
         country: '',
-        city:'',
-        street:'',
-        zipcode:'',
-        phone:'',
+        city: '',
+        street: '',
+        zipcode: '',
+        phone: '',
         email: '',
-        description:''
+        description: ''
       }}
 
               onSubmit={onCreateOrder}
@@ -143,7 +141,6 @@ export default () => {
         )}
       </Formik>
     </>
-
 
   )
 }

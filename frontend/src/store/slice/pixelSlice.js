@@ -8,7 +8,7 @@ const pixelSlice = createSlice({
       const pixel = action.payload;
       const existingPixel = state.find(p => p.id === pixel.id);
       if (existingPixel) {
-        return state.filter(p => p.id !== pixel.id) //kam tas returnas
+        return state.filter(p => p.id !== pixel.id)
       } else {
         state.push(pixel);
       }

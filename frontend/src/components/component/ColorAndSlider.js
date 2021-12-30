@@ -32,7 +32,6 @@ export default function ColorAndSlider({size, id}) {
   const dispatch = useDispatch();
   // const color = useSelector(storeState => storeState.pixel);
 
-
   const handleChange = (event, newValue) => {
     if (typeof newValue === 'number') {
       setValue(newValue);

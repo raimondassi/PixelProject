@@ -3,7 +3,6 @@ package com.pixel.pixelproject.config;
 import com.pixel.pixelproject.security.JwtAuthenticationFilter;
 import com.pixel.pixelproject.security.JwtAuthorizationFilter;
 import com.pixel.pixelproject.security.service.JwtService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -31,20 +30,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf() //cross-site request forgery
-                    .disable()
+                .disable()
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // without session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // without session
                 .and()
                 .authorizeRequests()
-                    .antMatchers(HttpMethod.GET, "/api/picture","/swagger-ui/**", "/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html**", "/webjars/**")
-                        .permitAll()
-                    .antMatchers(HttpMethod.POST,"/api/createuser","/api/picture")
-                        .permitAll()
-                    .anyRequest()
-                        .authenticated()
+                .antMatchers(HttpMethod.GET, "/api/picture", "/swagger-ui/**", "/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html**", "/webjars/**")
+                .permitAll()
+                .antMatchers(HttpMethod.POST, "/api/createuser", "/api/picture")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .exceptionHandling()
-                    .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 .and()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtService))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtService));
@@ -56,6 +55,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
 
     }
-
 
 }
