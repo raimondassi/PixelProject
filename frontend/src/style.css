@@ -1,3 +1,15 @@
 .product-form {
     margin: 25px;
 }
+
+.blog-footer {
+    margin-top: 1rem;
+    padding: 2.5rem 0;
+    color: #1c1c1c;
+    text-align: center;
+    background-color: #b9b9b9;
+}
+
+.blog-footer p:last-child {
+    margin-bottom: 0;
+}

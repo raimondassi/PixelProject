@@ -43,7 +43,7 @@ export default () => {
       elevation={0}
       sx={{borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}
     >
-      <Toolbar sx={{flexWrap: 'wrap'}}>
+      <Toolbar sx={{flexWrap: 'wrap', background: "#b9b9b9"}}>
         <Typography variant="h6" color="inherit" noWrap sx={{flexGrow: 1}}>
           <Button
             variant="button"

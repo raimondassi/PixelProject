@@ -100,7 +100,6 @@ export default function PictureGeneration() {
         {
           user ?
             <Stack spacing={2} direction="row" justifyContent="center">
-              <Button variant="contained">save for later </Button>
               <Button variant="contained"
                       onClick={() => onCreateOrder()}
                       to="/order"
@@ -109,7 +108,7 @@ export default function PictureGeneration() {
               </Button>
             </Stack>
             :
-            <HelperText name="If you want to order or save picture you have to login"/>
+            <HelperText name="If you want to order this product you have to login"/>
         }
       </div>
       }
