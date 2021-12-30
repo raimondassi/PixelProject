@@ -50,7 +50,7 @@ export default () => {
     }
     createOrder(requestObject)
       .then(({status}) => {
-        if (status === 201) {
+        if (status === 200) {
           setNotification({isVisible: true, message: 'Order created successfully', severity: 'success'});
           helpers.resetForm();
         }

@@ -36,7 +36,7 @@ export default function PictureGeneration() {
 
   return (
     <>
-      <div style={{width: '100%', textAlign: "center"}}>
+      <div style={{width: '100%', textAlign: "center", color: "#172b77"}}>
         Please select fraction sizes you will use
         <Box sx={{
           display: 'grid',
